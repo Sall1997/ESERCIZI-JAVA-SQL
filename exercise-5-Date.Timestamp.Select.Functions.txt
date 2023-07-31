@@ -1,0 +1,51 @@
+  CRETATE TABLE MEAL_ORDER
+TIME_MEAL_ORDERED TIMESTAMP DEFAULT NOW(),
+  MEAL_NAME VARCHAR(255)
+);
+  
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME) 
+    VALUES (NOW(), 'Spaghetti Bolognese');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME) 
+    VALUES (DATE_ADD(NOW(), INTERVAL 1 HOUR), 'Grilled Chicken Sandwich');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME) 
+    VALUES (DATE_ADD(NOW(), INTERVAL 2 HOUR), 'Pesto Pasta');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME) 
+    VALUES (DATE_ADD(NOW(), INTERVAL 3 HOUR), 'Pesto Pasta');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME) 
+    VALUES (DATE_ADD(NOW(), INTERVAL 4 HOUR), 'Grilled Chicken Sandwich');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME) 
+    VALUES (DATE_ADD(NOW(), INTERVAL 5 HOUR), 'Pesto Pasta');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME) 
+    VALUES (DATE_ADD(NOW(), INTERVAL 6 HOUR), 'Spaghetti Bolognese');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME) 
+    VALUES (DATE_ADD(NOW(), INTERVAL 7 HOUR), 'Pesta Pasta');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME) 
+    VALUES (DATE_ADD(NOW(), INTERVAL 8 HOUR), 'Pesto Pasta');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME) 
+    VALUES (DATE_ADD(NOW(), INTERVAL 9 HOUR), 'Spaghetti Bolognese');
+
+____________________________________________________________________________
+
+
+SELECT 
+  CONCAT ('nome pasto = ', MEAL_NAME, '; data ordine = ', TIME_MEAL_ORDERED) AS DETTAGLI_ORDINE,
+  UPPER(MEAL_NAME) AS UPPER_MEAL, # imposta in minuscolo tutte le scritte dentro la colonna
+  LOWER(MEAL_NAME) AS LOWER_MEAL, # imposta in minuscolo tutte le scritte dentro la colonna
+  TRIM('a' FROM MEAL_NAME) AS TRIM_NAME,  # toglie il carattere della prima e l'ultima stringa
+  LENGTH(MEAL_NAME) AS LUNGHEZZA, # conta il numero di caratteri di ogni nome del pasto
+  SUBSTRING(MEAL_NAME, 2) AS SUB_PIATTI, # elimina i ptimi 2 caratteri dei testi
+  ROUND(TIME_MEAL_ORDERED, 2) AS ROUND_DATA, # serve per fare approssimazioni e troncare cifre. In questo caso non serve.
+  DATE_FORMAT(TIME_MEAL_ORDERED, '%d %M %Y') AS DATA
+FROM MEAL_ORDER;
+
+SELECT DATE_FORMAT(DATE_ADD(DATE_ADD(DATE_ADD(NOW(), 
+INTERVAL -26 YEAR), INTERVAL -6 MONTH), INTERVAL -17 DAY), '%d/%m/%Y') AS DATA_NASCITA;
