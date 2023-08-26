@@ -1,0 +1,6 @@
+ALTER TABLE INGREDIENT
+add constraint unique (NAME);
+modify CONTAINS_LACTOSE BOOLEAN not null,
+modify VEGETARIAN BOOLEAN not null,
+modify VEGAN BOOLEAN not null,
+modify GLUTEN_FREE BOOLEAN not null;
