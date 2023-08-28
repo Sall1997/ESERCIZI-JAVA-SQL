@@ -1,0 +1,27 @@
+select M.NAME, i.NAME as ingredienti  from  meal M 
+inner join ingredient I on I.MEAL_ID = M.MEAL_ID
+order by m.NAME 
+
+select M.NAME, i.NAME as ingredienti  from  meal M 
+left join ingredient I on I.MEAL_ID = M.MEAL_ID
+
+select M.NAME, i.NAME as ingredienti  from  meal M 
+left join ingredient I on I.MEAL_ID = M.MEAL_ID
+where i.NAME is null
+
+select M.NAME, I.NAME as ingredienti
+from meal M
+left join ingredient I on I.MEAL_ID = M.MEAL_ID
+UNION
+select  M.NAME, I.NAME as ingredienti
+from ingredient I
+right join meal M on I.MEAL_ID = M.MEAL_ID
+
+select M.NAME, I.NAME as ingredienti
+from meal M
+left join ingredient I on I.MEAL_ID = M.MEAL_ID
+UNION
+select  M.NAME, I.NAME as ingredienti
+from ingredient I
+right join meal M on I.MEAL_ID = M.MEAL_ID
+where M.NAME is null or i.NAME is null
